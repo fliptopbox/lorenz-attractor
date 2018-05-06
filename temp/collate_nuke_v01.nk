@@ -1,0 +1,261 @@
+#! /usr/local/Nuke11.0v4/libnuke-11.0.4.so -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="1940" y="20" w="2512" h="1364" screen="0">
+        <splitter orientation="1">
+            <split size="43"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1846" stretch="1"/>
+            <splitter orientation="1">
+                <split size="1486"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+                <split size="356"/>
+                <dock id="" activePageId="uk.co.thefoundry.scripteditor.1">
+                    <page id="uk.co.thefoundry.scripteditor.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="20" y="20" w="1872" h="1004" fullscreen="1" screen="1">
+        <splitter orientation="2">
+            <split size="1004"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /home/bruce/Projects/github/lorenz-attractor/temp/collate_nuke_v01.nk
+ project_directory "\[python \{nuke.script_directory()\}]"
+ last_frame 5
+ lock_range true
+ fps 25
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/aluminium/Scene/e0344_s0005/f####.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 5
+ origlast 5
+ origset true
+ colorspace sRGB
+ name Read8
+ xpos 840
+ ypos -333
+}
+Dot {
+ name Dot2
+ xpos 874
+ ypos -174
+}
+set N585a7d0 [stack 0]
+Dot {
+ name Dot1
+ xpos 874
+ ypos 210
+}
+Constant {
+ inputs 0
+ channels rgb
+ color 0.1
+ format {{{parent.Read8.format}}}
+ name Constant1
+ label "*\[value color]"
+ xpos 730
+ ypos 33
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/aluminium/Scene/e1013_s0010/f####.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 5
+ origlast 5
+ origset true
+ name Read10
+ xpos 66
+ ypos -382
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/aluminium/Scene/e0992_s0010/f####.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 5
+ origlast 5
+ origset true
+ name Read9
+ xpos -40
+ ypos -519
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/aluminium/Scene/e0886_s0010/f####.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 5
+ origlast 5
+ origset true
+ name Read7
+ xpos -40
+ ypos -303
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/aluminium/Scene/e0723_s0010/f####.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 5
+ origlast 5
+ origset true
+ name Read6
+ xpos -40
+ ypos -615
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/aluminium/Scene/e0682_s0010/f####.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 5
+ origlast 5
+ origset true
+ name Read5
+ xpos 59
+ ypos -489
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/aluminium/Scene/e0579_s0010/f####.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 3
+ origlast 3
+ origset true
+ name Read4
+ xpos 290
+ ypos -591
+}
+set N7720e60 [stack 0]
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/aluminium/Scene/e0476_s0010/f####.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 5
+ origlast 5
+ origset true
+ name Read3
+ xpos 180
+ ypos -591
+}
+set N9e41900 [stack 0]
+push $N585a7d0
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/aluminium/Scene/e0112_s0005/f####.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 5
+ origlast 5
+ origset true
+ name Read1
+ xpos -40
+ ypos -423
+}
+push 0
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/aluminium/Scene/e0293_s0005/f####.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 5
+ origlast 5
+ origset true
+ name Read2
+ xpos 70
+ ypos -615
+}
+Constant {
+ inputs 0
+ channels rgb
+ format {{{parent.Read8.format}}}
+ name Constant2
+ xpos 620
+ ypos -322
+}
+Merge2 {
+ inputs 11+1
+ operation plus
+ Achannels rgb
+ Bchannels rgb
+ output rgb
+ name Merge1
+ xpos 620
+ ypos -177
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge2
+ xpos 620
+ ypos 63
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy1
+ xpos 620
+ ypos 200
+}
+Premult {
+ name Premult1
+ xpos 620
+ ypos 255
+}
+CheckerBoard2 {
+ inputs 0
+ format {{{parent.Read8.format}}}
+ name CheckerBoard1
+ xpos 400
+ ypos 326
+}
+Merge2 {
+ inputs 2
+ name Merge3
+ xpos 620
+ ypos 351
+}
+push $N7720e60
+push $N9e41900
+Viewer {
+ inputs 2
+ frame 1
+ frame_range 1-5
+ fps 25
+ gl_buffer_depth half-float
+ useGPUForViewer true
+ useGPUForInputs true
+ translate {0.5863999724 -0.03880000114}
+ name Viewer1
+ selected true
+ xpos 620
+ ypos 543
+}

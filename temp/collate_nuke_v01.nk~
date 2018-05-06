@@ -1,0 +1,259 @@
+#! /usr/local/Nuke11.0v1.000009b/libnuke-11.0.1.so -nx
+version 11.0 v1.000009b
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="1920" y="0" w="2560" h="1440" fullscreen="1" screen="0">
+        <splitter orientation="1">
+            <split size="43"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1894" stretch="1"/>
+            <splitter orientation="2">
+                <split size="1393"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="0" y="0" w="1920" h="1080" fullscreen="1" screen="1">
+        <splitter orientation="2">
+            <split size="1080"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /home/bruce/Projects/github/lorenz-attractor/temp/collate_nuke_v01.nk
+ project_directory "\[python \{nuke.script_directory()\}]"
+ frame 3
+ last_frame 5
+ lock_range true
+ fps 25
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+Constant {
+ inputs 0
+ channels rgb
+ color 0.142857142
+ format {{{parent.Read8.format}}}
+ name Constant1
+ label "*\[value color]"
+ xpos 448
+ ypos 33
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/nScene_s20_e411_f####.png
+ format "384 216 0 0 384 216 1 "
+ last 5
+ origlast 5
+ origset true
+ name Read2
+ xpos 81
+ ypos -377
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/nScene_s20_e837_f####.png
+ format "384 216 0 0 384 216 1 "
+ last 5
+ origlast 5
+ origset true
+ name Read8
+ xpos -192
+ ypos -231
+}
+Dot {
+ name Dot2
+ xpos -158
+ ypos -78
+}
+set N8eecc10 [stack 0]
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/nScene_s20_e790_f####.png
+ format "384 216 0 0 384 216 1 "
+ last 5
+ origlast 5
+ origset true
+ name Read7
+ xpos -29
+ ypos -281
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/nScene_s20_e630_f####.png
+ format "384 216 0 0 384 216 1 "
+ last 5
+ origlast 5
+ origset true
+ name Read5
+ xpos 81
+ ypos -185
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/nScene_s20_e562_f####.png
+ format "384 216 0 0 384 216 1 "
+ last 5
+ origlast 5
+ origset true
+ name Read4
+ xpos -29
+ ypos -353
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/nScene_s20_e449_f####.png
+ format "384 216 0 0 384 216 1 "
+ last 5
+ origlast 5
+ origset true
+ name Read3
+ xpos 81
+ ypos -449
+}
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/nScene_s20_e753_f####.png
+ format "384 216 0 0 384 216 1 "
+ last 5
+ origlast 5
+ origset true
+ name Read6
+ xpos 81
+ ypos -281
+}
+push 0
+Read {
+ inputs 0
+ file /home/bruce/Projects/github/lorenz-attractor/temp/render/nScene_s20_e164_f####.png
+ format "384 216 0 0 384 216 1 "
+ last 5
+ origlast 5
+ origset true
+ name Read1
+ xpos -29
+ ypos -449
+}
+Constant {
+ inputs 0
+ channels rgb
+ format {{{parent.Read8.format}}}
+ name Constant2
+ xpos 620
+ ypos -226
+}
+Merge2 {
+ inputs 9+1
+ operation plus
+ Achannels rgb
+ Bchannels rgb
+ output rgb
+ name Merge1
+ xpos 620
+ ypos -81
+}
+set N6866510 [stack 0]
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge2
+ xpos 620
+ ypos 63
+}
+set N645c520 [stack 0]
+push $N6866510
+Constant {
+ inputs 0
+ channels rgb
+ color 7
+ format {{{parent.Read8.format}}}
+ name Constant3
+ xpos 847
+ ypos -80
+}
+Merge2 {
+ inputs 2
+ operation divide
+ name Merge4
+ xpos 767
+ ypos 50
+}
+set N10c1950 [stack 0]
+Merge2 {
+ inputs 2
+ operation minus
+ name Merge5
+ xpos 787
+ ypos 212
+}
+push $N10c1950
+push $N8eecc10
+Dot {
+ name Dot1
+ xpos -158
+ ypos 210
+}
+push $N645c520
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy1
+ xpos 620
+ ypos 200
+}
+Premult {
+ name Premult1
+ xpos 620
+ ypos 255
+}
+CheckerBoard2 {
+ inputs 0
+ format {{{parent.Read8.format}}}
+ boxsize 9.8
+ name CheckerBoard1
+ xpos 440
+ ypos 326
+}
+Merge2 {
+ inputs 2
+ name Merge3
+ xpos 620
+ ypos 351
+}
+Viewer {
+ inputs 3
+ frame 3
+ frame_range 1-5
+ fps 25
+ colour_sample_bbox {0.6041666865 0.4895833433 0.609375 0.4947916567}
+ samplepoints {{0.6041666865 0.4895833433}
+   }
+ translate {0.5730000138 0.06499999762}
+ name Viewer1
+ xpos 784
+ ypos 488
+}
